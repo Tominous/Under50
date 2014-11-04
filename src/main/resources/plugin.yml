@@ -4,3 +4,6 @@ main: com.deprecatednether.bukkit.under50.UnderFifty
 commands:
   fly:
     description: Toggle flight mode
+  gamemode:
+    description: Set your gamemode
+    aliases: [gm]

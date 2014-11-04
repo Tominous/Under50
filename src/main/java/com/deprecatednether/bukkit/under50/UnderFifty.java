@@ -18,11 +18,13 @@
 package com.deprecatednether.bukkit.under50;
 
 import com.deprecatednether.bukkit.under50.commands.FlyCommand;
+import com.deprecatednether.bukkit.under50.commands.GamemodeCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class UnderFifty extends JavaPlugin {
     @Override
     public void onEnable() {
         getCommand("fly").setExecutor(new FlyCommand());
+        getCommand("gamemode").setExecutor(new GamemodeCommand());
     }
 }

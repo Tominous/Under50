@@ -1,0 +1,3 @@
+name: Under50
+version: ${project.version}
+main: com.deprecatednether.bukkit.under50.UnderFifty

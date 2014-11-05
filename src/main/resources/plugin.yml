@@ -7,3 +7,5 @@ commands:
   gamemode:
     description: Set your gamemode
     aliases: [gm]
+  list:
+    description: Get a list of online players

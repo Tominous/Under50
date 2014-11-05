@@ -17,6 +17,7 @@
 
 package com.deprecatednether.bukkit.under50.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
@@ -24,22 +25,14 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class GamemodeCommand implements CommandExecutor{
+public class GamemodeCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage("Must be a player");
-            return true;
-        }
         if (!sender.hasPermission("under50.gamemode")) {
             sender.sendMessage(ChatColor.RED + "No permission.");
             return true;
         }
-        if (args.length != 1) {
-            sender.sendMessage(ChatColor.RED + "Insufficient arguments.");
-            return true;
-        }
-        GameMode target = null;
+        GameMode target;
         String arg = args[0].toLowerCase();
         if (arg.equals("adventure") || arg.equals("a") || arg.equals("2")) {
             target = GameMode.ADVENTURE;
@@ -47,14 +40,26 @@ public class GamemodeCommand implements CommandExecutor{
             target = GameMode.SURVIVAL;
         } else if (arg.equals("creative") || arg.equals("c") || arg.equals("1")) {
             target = GameMode.CREATIVE;
-        }
-        if (target == null) {
+        } else {
             sender.sendMessage(ChatColor.RED + "Invalid gamemode " + arg);
             return true;
         }
-        ((Player) sender).setGameMode(target);
-        sender.sendMessage(ChatColor.GREEN + "Game mode set to " + ChatColor.YELLOW +
-                target.toString().toLowerCase());
+        Player player;
+        if (args.length == 2) {
+            player = Bukkit.getServer().getPlayerExact(args[1]);
+            if (player == null) {
+                sender.sendMessage(ChatColor.RED + "Unknown player");
+                return true;
+            }
+        } else if (args.length == 1 && sender instanceof Player) {
+            player = (Player) sender;
+        } else {
+            sender.sendMessage(ChatColor.RED + "Improper usage. :(");
+            return true;
+        }
+        player.setGameMode(target);
+        sender.sendMessage(ChatColor.GREEN + player.getName() + "'s game mode set to " +
+                ChatColor.YELLOW + target.toString().toLowerCase());
         return true;
     }
 }

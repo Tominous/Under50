@@ -1,4 +1,6 @@
-=== DeprecatedNether's <50 ===
+DeprecatedNether's <50
+=====================
+
 **DeprecatedNether's <50** ("Under 50") is a Bukkit plugin that aims to add several commands and features (generally the basic things, like commands you'd find in Essentials).
 
 There are two rules:

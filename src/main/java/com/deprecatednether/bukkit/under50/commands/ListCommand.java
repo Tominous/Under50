@@ -32,10 +32,14 @@ public class ListCommand implements CommandExecutor {
             return true;
         }
         String list = "";
-        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-            list += ChatColor.YELLOW + ", " + player.getDisplayName();
+        if (Bukkit.getServer().getOnlinePlayers().length > 0) {
+            for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+                list += ChatColor.YELLOW + ", " + player.getDisplayName();
+            }
+            list = list.substring(2);
+        } else {
+            list = "nobody";
         }
-        list = list.substring(2);
         sender.sendMessage(ChatColor.YELLOW + "Currently online: " + list + " (" +
                 Bukkit.getServer().getOnlinePlayers().length + "/ " +
                 Bukkit.getServer().getMaxPlayers() + ")");

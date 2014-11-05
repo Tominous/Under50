@@ -49,7 +49,7 @@ public class FlyCommand implements CommandExecutor {
         target.sendMessage(ChatColor.YELLOW + "Flight mode " + (target.getAllowFlight() ?
                 ChatColor.GREEN + "enabled" : ChatColor.RED + "disabled") + ChatColor.YELLOW + ".");
         if (!target.equals(sender)) {
-            sender.sendMessage(ChatColor.YELLOW + "Flight mode for " + target.getName() +
+            sender.sendMessage(ChatColor.YELLOW + "Flight mode for " + target.getName() + " " +
                     (target.getAllowFlight() ? ChatColor.GREEN + "enabled" : ChatColor.RED +
                     "disabled") + ChatColor.YELLOW + ".");
         }

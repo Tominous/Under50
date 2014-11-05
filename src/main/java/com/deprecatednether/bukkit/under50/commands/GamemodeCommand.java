@@ -46,7 +46,7 @@ public class GamemodeCommand implements CommandExecutor {
         }
         Player player;
         if (args.length == 2) {
-            player = Bukkit.getServer().getPlayerExact(args[1]);
+            player = Bukkit.getServer().getPlayer(args[1]);
             if (player == null) {
                 sender.sendMessage(ChatColor.RED + "Unknown player");
                 return true;

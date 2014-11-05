@@ -17,6 +17,7 @@
 
 package com.deprecatednether.bukkit.under50.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -26,18 +27,32 @@ import org.bukkit.entity.Player;
 public class FlyCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage("Must be a player to fly");
+        Player target;
+        if (!(sender instanceof Player) && args.length != 1) {
+            sender.sendMessage("Try /fly <player name>");
             return true;
         }
         if (!sender.hasPermission("under50.fly")) {
             sender.sendMessage(ChatColor.RED + "Insufficient permission.");
             return true;
         }
-        Player player = (Player) sender;
-        player.setAllowFlight(!player.getAllowFlight());
-        player.sendMessage(ChatColor.YELLOW + "Flight mode " + (player.getAllowFlight() ?
+        if (args.length == 1) {
+            target = Bukkit.getServer().getPlayer(args[0]);
+        } else {
+            target = (Player) sender;
+        }
+        if (target == null) {
+            sender.sendMessage(ChatColor.RED + "Unknown player");
+            return true;
+        }
+        target.setAllowFlight(!target.getAllowFlight());
+        target.sendMessage(ChatColor.YELLOW + "Flight mode " + (target.getAllowFlight() ?
                 ChatColor.GREEN + "enabled" : ChatColor.RED + "disabled") + ChatColor.YELLOW + ".");
+        if (!target.equals(sender)) {
+            sender.sendMessage(ChatColor.YELLOW + "Flight mode for " + target.getName() +
+                    (target.getAllowFlight() ? ChatColor.GREEN + "enabled" : ChatColor.RED +
+                    "disabled") + ChatColor.YELLOW + ".");
+        }
         return true;
     }
 }

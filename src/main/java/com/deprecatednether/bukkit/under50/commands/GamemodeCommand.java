@@ -28,8 +28,8 @@ import org.bukkit.entity.Player;
 public class GamemodeCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.hasPermission("under50.gamemode")) {
-            sender.sendMessage(ChatColor.RED + "No permission.");
+        if (!sender.hasPermission("under50.gamemode") || args.length < 1) {
+            sender.sendMessage(ChatColor.RED + "Improper usage. :(");
             return true;
         }
         GameMode target;

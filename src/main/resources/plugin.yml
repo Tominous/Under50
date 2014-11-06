@@ -9,3 +9,6 @@ commands:
     aliases: [gm]
   list:
     description: Get a list of online players
+  tp:
+    description: Teleport to a player
+    aliases: [teleport]

@@ -20,6 +20,7 @@ package com.deprecatednether.bukkit.under50;
 import com.deprecatednether.bukkit.under50.commands.FlyCommand;
 import com.deprecatednether.bukkit.under50.commands.GamemodeCommand;
 import com.deprecatednether.bukkit.under50.commands.ListCommand;
+import com.deprecatednether.bukkit.under50.commands.TeleportCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class UnderFifty extends JavaPlugin {
@@ -28,5 +29,6 @@ public class UnderFifty extends JavaPlugin {
         getCommand("fly").setExecutor(new FlyCommand());
         getCommand("gamemode").setExecutor(new GamemodeCommand());
         getCommand("list").setExecutor(new ListCommand());
+        getCommand("tp").setExecutor(new TeleportCommand());
     }
 }

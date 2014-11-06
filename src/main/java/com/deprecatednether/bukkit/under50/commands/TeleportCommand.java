@@ -31,7 +31,7 @@ public class TeleportCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "No access");
             return true;
         }
-        Player who = null, toWhom = null;
+        Player who, toWhom;
         if (args.length == 1 && sender instanceof Player) {
             who = (Player) sender;
             toWhom = Bukkit.getServer().getPlayer(args[0]);

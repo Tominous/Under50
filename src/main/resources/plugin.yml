@@ -14,3 +14,5 @@ commands:
     aliases: [teleport]
   kick:
     description: Kick a player
+  bcast:
+    description: Broadcast's a server message

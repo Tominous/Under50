@@ -17,6 +17,7 @@
 
 package com.deprecatednether.bukkit.under50;
 
+import com.deprecatednether.bukkit.under50.commands.BroadcastCommand;
 import com.deprecatednether.bukkit.under50.commands.FlyCommand;
 import com.deprecatednether.bukkit.under50.commands.GamemodeCommand;
 import com.deprecatednether.bukkit.under50.commands.KickCommand;
@@ -32,5 +33,6 @@ public class UnderFifty extends JavaPlugin {
         getCommand("list").setExecutor(new ListCommand());
         getCommand("tp").setExecutor(new TeleportCommand());
         getCommand("kick").setExecutor(new KickCommand());
+        getCommand("bcast").setExecutor(new BroadcastCommand());
     }
 }
